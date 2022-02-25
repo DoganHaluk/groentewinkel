@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'groentewinkel';
+  title = 'Groentewinkelketen de vrolijke konijntjes';
+  slogan = 'Bestel nu, geleverd binnen het uur';
 }
