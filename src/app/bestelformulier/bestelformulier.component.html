@@ -1,0 +1,16 @@
+<h1>Bestelformulier</h1>
+<div>
+  <label for="winkels">Kies winkel:</label>
+  <select id="winkels" name="winkels">
+    <option *ngFor="let winkel of winkels">{{winkel.naam}}</option>
+  </select>
+</div>
+<div>
+  <label for="groenten">Kies groente:</label>
+  <select id="groenten" name="groenten">
+    <option *ngFor="let groente of groenten">{{groente.naam}} ({{groente.eenheidsprijs}}/{{groente.eenheid}})</option>
+  </select>
+  <label for="stuk">Aantal/gewicht (stuk)</label>
+  <input id="stuk" name="stuk" type="number" min="1" required>
+</div>
+<button type="button" class="bestel-button">Bestel</button>
