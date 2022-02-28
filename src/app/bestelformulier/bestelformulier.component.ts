@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Winkel} from "../winkel";
 import {Groente} from "../groente";
 import {BestelformulierService} from "../bestelformulier.service";
+import {Bestellijn} from "../bestellijn";
 
 @Component({
   selector: 'app-bestelformulier',
@@ -10,7 +11,8 @@ import {BestelformulierService} from "../bestelformulier.service";
 })
 export class BestelformulierComponent implements OnInit {
   winkels: Winkel[] = [];
-  groenten: Groente[] = []
+  groenten: Groente[] = [];
+  gekozen = new Bestellijn("","",0,0,0);
 
   constructor(private bestelformulierSevice: BestelformulierService) {
   }
@@ -28,5 +30,16 @@ export class BestelformulierComponent implements OnInit {
   getGroenten(): void {
     this.bestelformulierSevice.getGroenten()
       .subscribe(groenten => this.groenten = groenten);
+  }
+
+  bestel(){
+    for(let groente of this.groenten){
+      if (groente.naam==this.gekozen.groente){
+        this.gekozen.prijs=groente.eenheidsprijs;
+      }
+    }
+    this.gekozen.totaal=this.gekozen.prijs*this.gekozen.stuk;
+    //this.winkelmandService.addBestelling(this.model);
+    this.gekozen = new Bestellijn("","",0,0,0);
   }
 }
