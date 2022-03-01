@@ -1,0 +1,30 @@
+<h1>Winkelmandje</h1>
+<ul class="winkelmandje">
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th colspan="4"></th>
+      <td>
+        <button class="btn btn-primary" (click)="converteer()">{{munteenheidOpKnop}}</button>
+      </td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let bestellijn of bestellijnen">
+      <td>{{bestellijn.winkel}}</td>
+      <td>{{bestellijn.groente}}</td>
+      <td>{{bestellijn.stuk}}</td>
+      <td><span>{{munteenheidInTabel}} </span>{{bestellijn.prijs.toFixed(2)}}</td>
+      <td><span>{{munteenheidInTabel}} </span>{{bestellijn.totaal.toFixed(2)}}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <th colspan="4">Totaal te betalen</th>
+      <td><span>{{munteenheidInTabel}} </span>{{getTotaalbedrag().toFixed(2)}}</td>
+    </tr>
+    </tfoot>
+  </table>
+
+</ul>

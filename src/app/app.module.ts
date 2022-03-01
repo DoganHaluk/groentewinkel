@@ -7,19 +7,21 @@ import {InMemoryDataService} from './in-memory-data.service';
 import {AppComponent} from './app.component';
 import {BestelformulierComponent} from './bestelformulier/bestelformulier.component';
 import {FormsModule} from "@angular/forms";
+import {WinkelmandjeComponent} from './winkelmandje/winkelmandje.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BestelformulierComponent
+    BestelformulierComponent,
+    WinkelmandjeComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false}
-    ),
-    FormsModule
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Winkel} from "../winkel";
 import {Groente} from "../groente";
-import {BestelformulierService} from "../bestelformulier.service";
 import {Bestellijn} from "../bestellijn";
+import {BestelformulierService} from "../bestelformulier.service";
+import {WinkelmandjeService} from "../winkelmandje.service";
 
 @Component({
   selector: 'app-bestelformulier',
@@ -12,9 +13,13 @@ import {Bestellijn} from "../bestellijn";
 export class BestelformulierComponent implements OnInit {
   winkels: Winkel[] = [];
   groenten: Groente[] = [];
-  gekozen = new Bestellijn("","",0,0,0);
+  totaalBedrag: number = 0;
+  gekozen = new Bestellijn("", "", 0, 0, 0);
 
-  constructor(private bestelformulierSevice: BestelformulierService) {
+  constructor(
+    private bestelformulierSevice: BestelformulierService,
+    private winkelmandjeService: WinkelmandjeService
+  ) {
   }
 
   ngOnInit(): void {
@@ -32,14 +37,14 @@ export class BestelformulierComponent implements OnInit {
       .subscribe(groenten => this.groenten = groenten);
   }
 
-  bestel(){
-    for(let groente of this.groenten){
-      if (groente.naam==this.gekozen.groente){
-        this.gekozen.prijs=groente.eenheidsprijs;
+  bestel() {
+    for (let groente of this.groenten) {
+      if (groente.naam == this.gekozen.groente) {
+        this.gekozen.prijs = groente.eenheidsprijs;
       }
     }
-    this.gekozen.totaal=this.gekozen.prijs*this.gekozen.stuk;
-    //this.winkelmandService.addBestelling(this.model);
-    this.gekozen = new Bestellijn("","",0,0,0);
+    this.gekozen.totaal = this.gekozen.prijs * this.gekozen.stuk;
+    this.winkelmandjeService.addBestellijn(this.gekozen);
+    this.gekozen = new Bestellijn("", "", 0, 0, 0);
   }
 }

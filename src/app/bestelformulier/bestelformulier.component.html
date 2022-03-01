@@ -3,14 +3,14 @@
   <div class="form-group">
     <label for="winkels">Kies winkel:</label>
     <select id="winkels" name="winkels" required [(ngModel)]="gekozen.winkel">;
-      <option *ngFor="let winkel of winkels" [title]="winkel.adres+', '+winkel.post+' '+winkel.gemeente">{{winkel.naam}}</option>
+      <option *ngFor="let winkel of winkels" [title]="winkel.adres+', '+winkel.post+' '+winkel.gemeente" [value]="winkel.naam">{{winkel.naam}}</option>
     </select>
   </div>
 
   <div class="form-group">
     <label for="groenten">Kies groente:</label>
     <select id="groenten" name="groenten" minlength="4" required [(ngModel)]="gekozen.groente">
-      <option *ngFor="let groente of groenten">{{groente.naam}} ({{groente.eenheidsprijs}}/{{groente.eenheid}})</option>
+      <option *ngFor="let groente of groenten" [value]="groente.naam">{{groente.naam}} ({{groente.eenheidsprijs}}/{{groente.eenheid}})</option>
     </select>
     <label for="stuk">Aantal/gewicht (stuk)</label>
     <input id="stuk" name="stuk" type="number" min="1" required [(ngModel)]="gekozen.stuk">
