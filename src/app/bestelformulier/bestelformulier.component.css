@@ -1,0 +1,4 @@
+input:invalid+span:after{
+  content: 'Decimaal enkel bij kg, aub';
+  visibility: visible;
+}

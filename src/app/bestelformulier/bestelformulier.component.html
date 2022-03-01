@@ -13,7 +13,8 @@
       <option *ngFor="let groente of groenten" [value]="groente.naam">{{groente.naam}} ({{groente.eenheidsprijs}}/{{groente.eenheid}})</option>
     </select>
     <label for="stuk">Aantal/gewicht (stuk)</label>
-    <input id="stuk" name="stuk" type="number" min="1" required [(ngModel)]="gekozen.stuk">
+    <input id="stuk" name="stuk" type="number" min="1" step="1" required [(ngModel)]="gekozen.stuk">
+    <span class="validity"></span>
   </div>
 
   <button type="button" class="bestel-button" (click)="bestel()" [disabled]="!(gekozen.stuk>0)||!bestellingForm.form.valid">Bestel</button>
