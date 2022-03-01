@@ -23,10 +23,6 @@ export class WinkelmandjeService {
       }
     }
     this.bestellijnen.push(nieuweBestellijn);
-    let totaalBedrag: number = 0;
-    for (let i = 0; i < this.bestellijnen.length; i++) {
-      totaalBedrag += this.bestellijnen[i].totaal;
-    }
   }
 
   berekenTotaalBedrag(): number {

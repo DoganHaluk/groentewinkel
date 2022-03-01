@@ -13,7 +13,6 @@ import {WinkelmandjeService} from "../winkelmandje.service";
 export class BestelformulierComponent implements OnInit {
   winkels: Winkel[] = [];
   groenten: Groente[] = [];
-  totaalBedrag: number = 0;
   gekozen = new Bestellijn("", "", 0, 0, 0);
 
   constructor(
